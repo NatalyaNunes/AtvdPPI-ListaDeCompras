@@ -1,3 +1,15 @@
+<?php 
+$conn = new PDO("sqlite:bd");
+$conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ); 
+
+$id = isset($_GET["id"]) ? $_GET["id"] : null;
+        $caminho = null;
+        if($id == null){
+            $caminho = "WS/salvar.php?id=$id";
+        }else{
+            $caminho = "WS/editar.php?id=$id";      
+        }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,15 +30,35 @@
         </ul>
     </nav>
     <main>
-        <form action="WS/salvar.php" method="get" class="container">
-            <div class="form-group"><label for="txtNome">Nome</label>
-            <input type="text" name="nome" id="txtNome" class="form-control"></div>
-            
-            <div class="form-group"><label for="numValor">Valor unitário do item</label>
-            <input type="number " step="0.01" name="valor" id="numValor" class="form-control"></div>
         
-            <div class="form-group"><label for="numQtd">Quantidade do item</label>
-            <input type="number" name="quantidade" id="numQtd" class="form-control"></div>
+    <?php
+            $slq = $conn->query("select * FROM compras WHERE id= $id");
+            $compras = $slq->fetchAll();
+        
+            foreach ($compras as $comp): {
+            }
+            ?>
+            <h3>Atualizando: <?= $comp->nome ?></h3>
+            <?php endforeach; ?>
+
+        <form action="<?php echo $caminho ?>" method="get" class="container">
+            <div class="form-group">
+                <input type="hidden" name="id" value="<?php echo $id ?>">
+            </div>
+            <div class="form-group">
+                <label for="txtNome">Nome</label>
+                <input type="text" name="nome" id="txtNome" class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label for="numValor">Valor unitário do item</label>
+                <input type="number " step="0.01" name="valor" id="numValor" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="numQtd">Quantidade do item</label>
+                <input type="number" name="quantidade" id="numQtd" class="form-control">
+            </div>
         
             <input type="submit" value="Crie" class="btn btn-primary">
         </form>
