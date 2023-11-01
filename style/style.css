@@ -12,7 +12,12 @@ nav{
     width: 100%;
     
 }
-
+.bc-blue{
+    background-color: #0d8bd9;
+}
+.bc-green{
+    background-color: green;
+}
 a{
    text-decoration: none;
    color: #FFFFFF;
@@ -34,6 +39,47 @@ table{
 .edite{
     background-color: #0d8bd9;
 }
+
+.edite:hover{
+    background-color: #0b6ca9;
+}
+
 .delete{
     background-color: #FF0000;
+}
+
+.delete:hover{
+    background-color: #c40101;
+}
+
+.btnn {
+    color: #fff;
+    border: none;
+    width: 100%;
+    margin: 1rem;
+    margin-bottom: 0rem ;
+    padding: 10px 20px;
+    margin-right: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-crie {
+    background-color: #28a745;
+}
+
+.btn-crie:hover {
+    background-color: #218838;
+}
+
+.btn-cancelar {
+    background-color: #007bff;
+}
+
+.btn-cancelar:hover {
+    background-color: #0056b3;
 }

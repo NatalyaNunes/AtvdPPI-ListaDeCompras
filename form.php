@@ -2,6 +2,8 @@
 $conn = new PDO("sqlite:bd");
 $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ); 
 
+$valorBtn = "Criar";
+
 $id = isset($_GET["id"]) ? $_GET["id"] : null;
         $caminho = null;
         if($id == null){
@@ -18,7 +20,7 @@ $id = isset($_GET["id"]) ? $_GET["id"] : null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de compras</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="style/style.css">
 
 </head>
 <body>
@@ -30,8 +32,11 @@ $id = isset($_GET["id"]) ? $_GET["id"] : null;
         </ul>
     </nav>
     <main>
-        
+
     <?php
+
+        if($id != null){
+            $valorBtn = "Atualizar";
             $slq = $conn->query("select * FROM compras WHERE id= $id");
             $compras = $slq->fetchAll();
         
@@ -39,7 +44,8 @@ $id = isset($_GET["id"]) ? $_GET["id"] : null;
             }
             ?>
             <h3>Atualizando: <?= $comp->nome ?></h3>
-            <?php endforeach; ?>
+            <?php endforeach; }
+            ?>
 
         <form action="<?php echo $caminho ?>" method="get" class="container">
             <div class="form-group">
@@ -59,8 +65,11 @@ $id = isset($_GET["id"]) ? $_GET["id"] : null;
                 <label for="numQtd">Quantidade do item</label>
                 <input type="number" name="quantidade" id="numQtd" class="form-control">
             </div>
-        
-            <input type="submit" value="Crie" class="btn btn-primary">
+            <div class="botoes">
+                <input type="submit" value="<?php echo $valorBtn ?>" class="btn-crie btnn">
+                <a href="index.php" class="btn-cancelar btnn">Cancelar</a>
+            </div>
+            
         </form>
 </main>
 </body>
