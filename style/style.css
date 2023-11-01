@@ -9,6 +9,8 @@ nav{
     color: #FFFFFF;
     background-color: #193073;
     padding: 2rem;
+    width: 100%;
+    
 }
 
 a{
@@ -19,13 +21,14 @@ a{
 table{
     margin: 1rem;
 }
-button{
+.but{
     border-radius: 0.5rem;
     font-size: 13;
     width: 165px;
     height: 35px;
     border: none;
     color: white;
+    padding: 0.5rem;
 }
 
 .edite{

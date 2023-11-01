@@ -45,8 +45,8 @@ $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
     <td><?= $comp->valor_uni ?></td>
     <td><?= $comp->qntdAdquirida ?></td>
     <td><?= $comp->valor_uni * $comp->qntdAdquirida?></td>
-    <td><button class="edite">Editar </button></td>
-    <td><button class="delete">Deletar </button></td>
+    <td><a href="form.php?id=<?= $comp->id ?>" class="edite but">Editar</a></td>
+    <td><a href="WS/deletar.php?id=<?= $comp->id ?>"class="delete but">Deletar</a></td>
 </tr>
     <?php endforeach; ?>
 
